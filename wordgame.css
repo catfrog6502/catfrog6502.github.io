@@ -9,8 +9,8 @@ h1 {
 }
  
 .gridletter{
-    background-color: #f7f7f2;
-    color: #13070c;
+    background-color: lightyellow;
+    color: midnightblue;
 }
 
 
@@ -20,7 +20,7 @@ h1 {
 }
 
 .unselected {
-    background-color: #0fff0f;
+    background-color: #edecd8;
     color: #000000;
 }
 
@@ -42,7 +42,7 @@ h1 {
 
 .rightanswer {
     background-color: #ff9900;
-    color: #000000;
+    color: black;
 }
 
 
