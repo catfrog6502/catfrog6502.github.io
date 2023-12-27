@@ -1,7 +1,18 @@
-table {
-    margin-left: 10px;
-    margin-right: 10px;
-}
+
+.block {
+    display: block;
+    width: 100%;
+    border: none;
+    background-color: #04AA6D;
+    color: white;
+    padding: 14px 28px;
+    font-size: 16px;
+    cursor: pointer;
+    text-align: center;
+  }
+.block:hover {
+    background-color:#000000;
+}  
 
 h1 {
     text-align: center;
@@ -45,9 +56,7 @@ h1 {
     color: black;
 }
 
-
-td,
-th {
+td {
     background: #0fff0f;
     padding-left: 1em;
     padding-right: 1em;
@@ -75,11 +84,22 @@ table {
     background-image: linear-gradient(#83c6e7, #4466ff);
 }
 
+body {
+    margin-left: auto;
+    margin-right: auto;
+    background-image: linear-gradient(#1da9f0, #0000ff);
+    background-image: linear-gradient(#83c6e7, #4466ff);
+}
 
-#scorepane, #debugpane {
+
+
+#scorepane {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
     font-family: Arial, Helvetica, sans-serif ;
-
-    text-align: right;
+    max-width: 30%;
+    text-align: center;
     font-size: 2pc;
     font-weight: bold;
 }
@@ -89,12 +109,14 @@ body{
     background-image: linear-gradient(#4466ff,#83c6e7);
 }
 
-
+button {
+    float:right;
+}
 
 
 /**************************************************************/
 /* tablet */
-@media only screen and (max-width:1024px) {
+@media only all and (max-width:768px) {
     body {
         margin: 0;
         margin: 0;
@@ -102,7 +124,7 @@ body{
     }
 
     #wrapper {
-        width: auto;
+        width: 100%;
         min-width: 0;
         margin: 0;
         height: 100%;
@@ -116,75 +138,20 @@ body{
         padding-top: 0;
     }
 
-    nav {
-        width: 100%;
-        padding-bottom: 1em;
-        text-align: center;
+    td {
+        border: 1px solid #000000;
+        font-family: monospace;
+        font-size: 2em;
+        font-weight: bolder;
     }
-
-    nav li {
-        display: inline;
-        padding-right: 1em;
-    }
-
-
-    nav ul {
-        margin: 0
-    }
-
-    h1 {
-        padding: 0;
-    }
-
-    main {
-        margin-left: 0;
-        min-height: 200px;
-    }
+    
+    
 
     table {
-        margin-left: auto;
-        margin-right: auto;
+        border-collapse: collapse;
     }
+    
 
-    header {
-        padding: 0;
-        margin: 0;
-    }
-
-    #plainphone {
-        display: none;
-    }
-
-    #linkphone {
-        display: inline;
-    }
 }
 
 
-/**************************************************************/
-/* phone */
-@media only all and (max-width:768px) {
-    h1 {
-        height: 100%;
-        font-size: 1.5em;
-        padding-left: 0.3em;
-        margin: 0;
-    }
-
-
-
-
-    aside {
-        display: none;
-    }
-
-    #skills {
-        display: block;
-    }
-
-    .logopic {
-        display: none;
-    }
-
-
-}
