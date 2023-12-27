@@ -1,0 +1,98 @@
+table {
+    margin-left: 10px;
+    margin-right: 10px;
+}
+
+h1 {
+    text-align: center;
+    font-family: Arial, Helvetica, sans-serif ;
+}
+ 
+.gridletter{
+    background-color: #f7f7f2;
+    color: #13070c;
+}
+
+
+.selected {
+    background-color: black;
+    color: white;
+}
+
+.unselected {
+    background-color: #0fff0f;
+    color: #000000;
+}
+
+.startingright {
+    background-color: #ad7738;
+    background-color: #847f94;
+    color: #ddddff;
+}
+
+.wronganswer {
+    background-color: #444b77;
+    color: #ddddff;
+}
+
+.inputletter {
+    background-color: #9999ff;
+    color: #000000;
+}
+
+.rightanswer {
+    background-color: #ff9900;
+    color: #000000;
+}
+
+
+td,
+th {
+    background: #0fff0f;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: .5em;
+    padding-bottom: .5em;
+    text-align: center;
+    max-width: 300px;
+    border: 1px solid #000000;
+    font-family: monospace;
+    font-size: 2em;
+    font-weight: bolder;
+}
+
+#wrapper {
+width: 680px;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    padding:1pc;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+#wrapper {
+    width: 30%;
+    margin-left: auto;
+    margin-right: auto;
+    background-image: linear-gradient(#1da9f0, #0000ff);
+    background-image: linear-gradient(#83c6e7, #4466ff);
+}
+
+
+#scorepane, #debugpane {
+    font-family: Arial, Helvetica, sans-serif ;
+
+    text-align: right;
+    font-size: 2pc;
+    font-weight: bold;
+}
+
+body{
+    background-image: linear-gradient(#83c6e7, #4466ff);
+    background-image: linear-gradient(#4466ff,#83c6e7);
+}
