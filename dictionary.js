@@ -102,7 +102,7 @@ var bigwordlist5 =
 "exert", "exile", "exist", "expel", "extol", "extra", "exude", "exult", 
 "fable", "faced", "facet", "faded", "faint", "fairy", "faith", "faker", 
 "fakir", "false", "famed", "fancy", "farad", "farce", "fatal", "fated", 
-"fatty", "fatwa", "fault", "fauna", "favor", "fazed", "feast", "fecal", 
+"fatwa", "fault", "fauna", "favor", "fazed", "feast", "fecal", 
 "feces", "feign", "feint", "felon", "femur", "fence", "feral", "ferry", 
 "fetal", "fetch", "fetid", "fetus", "fever", "fewer", "fiber", "field", 
 "fiend", "fiery", "fifth", "fifty", "fight", "filch", "filer", "filly", 
