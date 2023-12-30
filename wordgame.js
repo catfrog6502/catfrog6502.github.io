@@ -154,6 +154,8 @@ function nextStage(){
   }
   else {
     score=score-1;
+    document.getElementById("resetbutton").style.display="none";
+    document.getElementById("submitbutton").style.display="none";
     document.getElementById("gridpane").style.display="none";   
     document.getElementById("scorepane").innerHTML = "Score: " + score
     if (score==4) {scorepane.innerHTML +="<h2>Perfect!</h2>"}
@@ -161,9 +163,9 @@ function nextStage(){
     if (score==6) {scorepane.innerHTML +="<h2>Excellent!</h2>"}
     if (score==7) {scorepane.innerHTML +="<h2>Nice.</h2>"}
     if (score>10) {scorepane.innerHTML +="<h2>Okay then.</h2>"}
-    reportcardpane.innerHTML = reportcard;
-    navigator.clipboard.writeText(reportcard);
+    document.getElementById("reportcardtext").innerHTML = reportcard;
     reportcardpane.style.display="block";
+    
   }
 }
 
@@ -177,8 +179,36 @@ function automaticallyDoLastWord(){
 submitanswers(); 
 }
 
+function getmonthname(m){
+  if (m== 0) return "Jan";
+  if (m== 1) return "Feb";
+  if (m== 2) return "Mar";
+  if (m== 3) return "Apr";
+  if (m== 4) return "May";
+  if (m== 5) return "Jun";
+  if (m== 6) return "Jul";
+  if (m== 7) return "Aug";
+  if (m== 8) return "Sep";
+  if (m== 9) return "Oct";
+  if (m==10) return "Nov";
+  if (m==11) return "Dec";
+}
 
 
+function copyscore(){
+  today = new Date();
+  month = today.getMonth();
+  month = getmonthname(month);
+  day = today.getDay();
+  datestring = month + " " + day;
+  
+
+  linktext = "\nhttp://catfrog6502.github.io\n";
+  reportcard = "Five-Stir: " + datestring + ": Score: " + score + "\n\n" + reportcard;
+  reportcard = reportcard.replaceAll("<br>","\n");
+  reportcard += linktext;
+  navigator.clipboard.writeText(reportcard);
+}
 
 
 function submitanswers() {
@@ -309,7 +339,8 @@ function drawattempts() {
       cell.innerHTML = attempts[i][j];
       if (rightwrong[i] && j>=matchcount[i]){
         cell.classList.add("wronganswer");
-        reportcardline += String.fromCodePoint(129477);
+//        reportcardline += String.fromCodePoint(129477);
+        reportcardline += String.fromCodePoint(129704);
       }
       if (rightwrong[i] && j<matchcount[i]){
         cell.classList.add("startingright");
@@ -330,7 +361,8 @@ function getwords() {
 thewords = [];
 
 for (i=0; i<gridsize; i++){
-thewords.push(bigwordlist5[Math.floor(Math.random() * bigwordlist5.length)]);
+  thewords.push(bigwordlist5[Math.floor(Math.random() * bigwordlist5.length)]);
+//  thewords.push(bigwordlist7[Math.floor(Math.random() * bigwordlist7.length)]);
 }
 console.log(thewords);
 return thewords;

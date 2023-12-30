@@ -1,6 +1,7 @@
 <html>
 <head>
   <title>Five-Stir</title>
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
 </head>
 
 <body>
@@ -8,14 +9,22 @@
   <h1> Five-Stir</h1>
 
   <div id="reportcardpane">
-    reportcard here
+    <div id="reportcardtext">
+asdasdasd
+    </div>
+  <div id="reportcardbuttons">
+    <button id="copyscorebutton" onclick="copyscore()" class="block">Share</button>
   </div>
+</div>
+
+  
   <div id="gridpane">
     <table id="gridtable">
     </table>
   </div>
 
-    <button onclick="submitanswers()" class="block">Submit</button>
+  <button id="submitbutton" onclick="submitanswers()" class="block">Submit</button>
+  <button id="resetbutton" onclick="resetallclolumns()" class="block">Reset</button>
 
     <div id="scorepane">Score: 0
     </div>
