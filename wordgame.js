@@ -129,7 +129,13 @@ function resetColumn(column) {
   }
 }
 
-
+function unselectAll(){
+  for (j=0; j<wordlength; j++){ 
+    for(i=0; i<gridsize; i++){
+    grid.rows[i].cells[j].classList.remove("selected");
+    }
+  }
+}
 
 
 
@@ -360,13 +366,14 @@ function drawattempts() {
 function getwords() {
 thewords = [];
 
+
 for (i=0; i<gridsize; i++){
   thewords.push(bigwordlist5[Math.floor(Math.random() * bigwordlist5.length)]);
 //  thewords.push(bigwordlist7[Math.floor(Math.random() * bigwordlist7.length)]);
 }
 console.log(thewords);
 return thewords;
-return ["four","five","lead","oreo"];
+return ["mixed", "weird", "laser", "funny", "funky"];
 }
 
 function sortAlpha(word) {
@@ -378,7 +385,7 @@ function sortAlpha(word) {
 function scramble(word) {
   strarray = word.split('');           
   var i,j,k
-  for (i = 0; i < strarray.length; i++) {
+  for (i = 0; i < strarray.length; i++){
     j = Math.floor(Math.random() * i)
     k = strarray[i]
     strarray[i] = strarray[j]
@@ -401,6 +408,9 @@ function shuffle(array) {
 }
 
 
+function showrules() {
+  window.open("rules.html", '_blank').focus();
+}
 
 initializePage();
 startNewGame();

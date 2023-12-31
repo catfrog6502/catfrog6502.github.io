@@ -16,24 +16,23 @@
 <body>
 <div id="wrapper">
   <h1> Five-Stir</h1>
-
   <div id="reportcardpane">
     <div id="reportcardtext">
-asdasdasd
     </div>
   <div id="reportcardbuttons">
-    <button id="copyscorebutton" onclick="copyscore()" class="block">Share</button>
+    <button id="copyscorebutton" onclick="copyscore()" class="block">Copy Results</button>
   </div>
 </div>
 
-  
   <div id="gridpane">
     <table id="gridtable">
     </table>
   </div>
 
-  <button id="submitbutton" onclick="submitanswers()" class="block">Submit</button>
-  <button id="resetbutton" onclick="resetallclolumns()" class="block">Reset</button>
+  <button id="rulesbutton"   onclick="showrules()"     class="mybutton">How to play</button>
+  <button id="resetbutton"   onclick="unselectAll()"   class="mybutton">Unselect All</button>
+  <button id="shufflebutton" onclick="drawgrid()"      class="mybutton">Shuffle</button>
+  <button id="submitbutton"  onclick="submitanswers()" class="mybutton">Submit</button>
 
     <div id="scorepane">Score: 0
     </div>
@@ -41,7 +40,7 @@ asdasdasd
 
 
   <div id="answerpane">
-    <table id="answertable">
+    <table id="answertable">3
     </table>
   </div>
 
