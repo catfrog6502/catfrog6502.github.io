@@ -6,25 +6,25 @@ var attempts = [];
 var grid;
 var gridsize;
 var allSelectedCells = [];
-var inputletters =[];
+var inputletters = [];
 var inputstring = "";
 var score = 0;
 var scorepane;
-var rightwrong=[];
-var matchcount=[];
-var columnlists=[];
-var reportcard  = "";
+var rightwrong = [];
+var matchcount = [];
+var columnlists = [];
+var reportcard = "";
 var reportcardpane;
-var previoustries =[];
+var previoustries = [];
 
 function initializePage() {
   reportcardpane = document.getElementById("reportcardpane");
-  reportcardpane.style.display="none";
+  reportcardpane.style.display = "none";
   grid = document.getElementById("gridtable");
-  scorepane =    document.getElementById("scorepane");
-  document.getElementById("copymessage").style.display="none";
+  scorepane = document.getElementById("scorepane");
+  document.getElementById("copymessage").style.display = "none";
 
- for (i=0; i<wordlength; i++) inputletters.push("");
+  for (i = 0; i < wordlength; i++) inputletters.push("");
   grid.addEventListener('click', (ev) => {
     const [x, y] = [
       ev.target.cellIndex,
@@ -34,7 +34,7 @@ function initializePage() {
       // Clicked on space between cells
       return;
     }
-    processcellclick(x,y);
+    processcellclick(x, y);
   });
 
   document.addEventListener('keydown', (event) => {
@@ -45,34 +45,34 @@ function initializePage() {
   }, false);
 }
 
-function processKeystroke(key){
+function processKeystroke(key) {
   //get current column
   h = document.getElementById("scorepane");
   // console.log(key);
   lastSelectedColumn = getLastSelectedcolumn();
 
-  if (key=="Backspace") {
-    if (lastSelectedColumn>=0) resetColumn(lastSelectedColumn);
+  if (key == "Backspace") {
+    if (lastSelectedColumn >= 0) resetColumn(lastSelectedColumn);
     // console.log("backspace");
   }
-  else if (key=="Enter"){
-    if (getLastSelectedcolumn() == wordlength-1) submitanswers();
+  else if (key == "Enter") {
+    if (getLastSelectedcolumn() == wordlength - 1) submitanswers();
   }
-  else if (lastSelectedColumn < wordlength  && columnlists[lastSelectedColumn+1].indexOf(key) >-1){
+  else if (lastSelectedColumn < wordlength && columnlists[lastSelectedColumn + 1].indexOf(key) > -1) {
     // console.log(key);
-    resetColumn(lastSelectedColumn+1);
-    keyRow = getKeyRow(lastSelectedColumn+1,key);
+    resetColumn(lastSelectedColumn + 1);
+    keyRow = getKeyRow(lastSelectedColumn + 1, key);
     // console.log(keyRow, lastSelectedColumn+1);
-    if (keyRow > -1) selectCell(grid.rows[keyRow].cells[lastSelectedColumn+1]);
-
-    }
+    if (keyRow > -1) selectCell(grid.rows[keyRow].cells[lastSelectedColumn + 1]);
 
   }
-///  console.log(columnlists[lastSelectedColumn].indexOf(key));
- 
 
-function getKeyRow(col,key){
-  for (j=0; j<gridsize; j++){
+}
+///  console.log(columnlists[lastSelectedColumn].indexOf(key));
+
+
+function getKeyRow(col, key) {
+  for (j = 0; j < gridsize; j++) {
 
     if (grid.rows[j].cells[col].innerHTML == key) return j;
   }
@@ -80,10 +80,10 @@ function getKeyRow(col,key){
 }
 
 
-function getLastSelectedcolumn(){
+function getLastSelectedcolumn() {
   // console.log("getLastSelectedcolumn()");
-  for (i=wordlength-1; i>-1; i--){
-    for (j=gridsize-1; j>-1; j--){
+  for (i = wordlength - 1; i > -1; i--) {
+    for (j = gridsize - 1; j > -1; j--) {
       // console.log(i,j,grid.rows[j].cells[i].classList);
       if (grid.rows[j].cells[i].classList.contains("selected")) {
         // console.log("Column " + i )
@@ -95,20 +95,20 @@ function getLastSelectedcolumn(){
 }
 
 
-function processcellclick(x,y){
+function processcellclick(x, y) {
   // console.log("cell " + x + "," + y + " clicked");
-    clickedCell = grid.rows[y].cells[x]
-    // console.log(clickedCell);
-    allSelectedCells = document.querySelectorAll("td.selected");
+  clickedCell = grid.rows[y].cells[x]
+  // console.log(clickedCell);
+  allSelectedCells = document.querySelectorAll("td.selected");
 
-    if (clickedCell.classList.contains("selected")) {
-      resetColumn(x);
-      return;
-    }
+  if (clickedCell.classList.contains("selected")) {
     resetColumn(x);
-    selectCell(clickedCell);
-    console.log(inputletters);
-  
+    return;
+  }
+  resetColumn(x);
+  selectCell(clickedCell);
+  console.log(inputletters);
+
 }
 
 
@@ -119,22 +119,22 @@ function selectCell(cell) {
     return "ERROR";
   }
   cell.classList.add("selected");
-  inputletters[cell.cellIndex] = 
-  cell.innerHTML;
+  inputletters[cell.cellIndex] =
+    cell.innerHTML;
 
 }
 
 function resetColumn(column) {
-//  console.log("resetting column " + column);
-  for(i=0; i<gridsize; i++){
-    grid.rows[i].cells[column].classList.remove("selected") 
+  //  console.log("resetting column " + column);
+  for (i = 0; i < gridsize; i++) {
+    grid.rows[i].cells[column].classList.remove("selected")
   }
 }
 
-function unselectAll(){
-  for (j=0; j<wordlength; j++){ 
-    for(i=0; i<gridsize; i++){
-    grid.rows[i].cells[j].classList.remove("selected");
+function unselectAll() {
+  for (j = 0; j < wordlength; j++) {
+    for (i = 0; i < gridsize; i++) {
+      grid.rows[i].cells[j].classList.remove("selected");
     }
   }
 }
@@ -150,76 +150,77 @@ function startNewGame() {
   drawgrid();
 }
 
-function nextStage(){
+function nextStage() {
   console.log("NEXT STAGE");
   drawattempts();
   if (gridsize == 1) {
     drawgrid();
     automaticallyDoLastWord();
-    return;}
-  if (gridsize > 0){
+    return;
+  }
+  if (gridsize > 0) {
     drawgrid();
   }
   else {
-    score=score-1;
-    document.getElementById("resetbutton").style.display="none";
-    document.getElementById("submitbutton").style.display="none";
-    document.getElementById("gridpane").style.display="none";   
-    document.getElementById("rulesbutton").style.display="none";   
-    document.getElementById("shufflebutton").style.display="none";   
+    score = score - 1;
+    document.getElementById("resetbutton").style.display = "none";
+    document.getElementById("submitbutton").style.display = "none";
+    document.getElementById("gridpane").style.display = "none";
+    document.getElementById("rulesbutton").style.display = "none";
+    document.getElementById("shufflebutton").style.display = "none";
 
     document.getElementById("scorepane").innerHTML = "Score: " + score
-    if (score==4) {scorepane.innerHTML +="<h2>Perfect!</h2>"}
-    if (score==5) {scorepane.innerHTML +="<h2>Awesome!</h2>"}
-    if (score==6) {scorepane.innerHTML +="<h2>Excellent!</h2>"}
-    if (score==7) {scorepane.innerHTML +="<h2>Nice.</h2>"}
-    if (score>10) {scorepane.innerHTML +="<h2>Okay then.</h2>"}
+    if (score == 4) { scorepane.innerHTML += "<h2>Perfect!</h2>" }
+    if (score == 5) { scorepane.innerHTML += "<h2>Awesome!</h2>" }
+    if (score == 6) { scorepane.innerHTML += "<h2>Excellent!</h2>" }
+    if (score == 7) { scorepane.innerHTML += "<h2>Nice.</h2>" }
+    if (score > 10) { scorepane.innerHTML += "<h2>Okay then.</h2>" }
     document.getElementById("reportcardtext").innerHTML = reportcard;
-    reportcardpane.style.display="block";    
+    reportcardpane.style.display = "block";
   }
 }
 
-function automaticallyDoLastWord(){
-  for (i=0; i<wordlength; i++){
+function automaticallyDoLastWord() {
+  for (i = 0; i < wordlength; i++) {
     console.log(grid);
-    inputletters[i]=grid.rows[0].cells[i].innerHTML;
+    inputletters[i] = grid.rows[0].cells[i].innerHTML;
     grid.rows[0].cells[i].classList.add("selected");
 
   }
-submitanswers(); 
+  submitanswers();
 }
 
-function getmonthname(m){
-  if (m== 0) return "Jan";
-  if (m== 1) return "Feb";
-  if (m== 2) return "Mar";
-  if (m== 3) return "Apr";
-  if (m== 4) return "May";
-  if (m== 5) return "Jun";
-  if (m== 6) return "Jul";
-  if (m== 7) return "Aug";
-  if (m== 8) return "Sep";
-  if (m== 9) return "Oct";
-  if (m==10) return "Nov";
-  if (m==11) return "Dec";
+function getmonthname(m) {
+  if (m == 0) return "Jan";
+  if (m == 1) return "Feb";
+  if (m == 2) return "Mar";
+  if (m == 3) return "Apr";
+  if (m == 4) return "May";
+  if (m == 5) return "Jun";
+  if (m == 6) return "Jul";
+  if (m == 7) return "Aug";
+  if (m == 8) return "Sep";
+  if (m == 9) return "Oct";
+  if (m == 10) return "Nov";
+  if (m == 11) return "Dec";
 }
 
 
-function copyscore(){
+function copyscore() {
   today = new Date();
   month = today.getMonth();
   month = getmonthname(month);
   day = today.getDate();
   datestring = month + " " + day;
-  
+
 
   linktext = "\nhttp://catfrog6502.github.io\n";
   reportcard = "Five-Stir " + datestring + ": Score: " + score + "\n\n" + reportcard;
-  reportcard = reportcard.replaceAll("<br>","\n");
+  reportcard = reportcard.replaceAll("<br>", "\n");
   reportcard += linktext;
   navigator.clipboard.writeText(reportcard);
-  document.getElementById("copymessage").style.display="block";
-  
+  document.getElementById("copymessage").style.display = "block";
+
 }
 
 
@@ -232,20 +233,20 @@ function submitanswers() {
   else {
     console.log("SUBMITTEED");
     inputstring = "";
-    for (i = 0; i<wordlength; i++) {
+    for (i = 0; i < wordlength; i++) {
       inputstring += inputletters[i];
     }
     console.log("You entered:" + inputstring);
   }
 
-  if (previoustries.indexOf(inputstring)>-1){
-    
+  if (previoustries.indexOf(inputstring) > -1) {
+
     scorepane.innerHTML = "Score: " + score + "<br>Already tried " + inputstring;
     return;
-   }
-   previoustries.push(inputstring);
-   score++;
-   scorepane.innerHTML = "Score: " + score
+  }
+  previoustries.push(inputstring);
+  score++;
+  scorepane.innerHTML = "Score: " + score
 
   if (words.includes(inputstring)) {
     // CORRECT ANSWER IS ENTERED
@@ -273,12 +274,12 @@ function submitanswers() {
 }
 
 
-function measureMatch(guess){
+function measureMatch(guess) {
   max = 0;
-  for(i=0; i<words.length; i++){
+  for (i = 0; i < words.length; i++) {
     count = 0;
-    j=0; 
-    while(words[i].slice(j,j+1)===guess[j] && j<wordlength) {j++;}
+    j = 0;
+    while (words[i].slice(j, j + 1) === guess[j] && j < wordlength) { j++; }
     if (j > max) max = j;
   }
   return max;
@@ -295,8 +296,8 @@ function drawgrid() {
   var scrambledwords = [];
 
 
-  columnlists=[];
-  for(i=0; i<wordlength; i++){
+  columnlists = [];
+  for (i = 0; i < wordlength; i++) {
     columnlists.push([]);
   }
 
@@ -307,14 +308,14 @@ function drawgrid() {
 
 
 
-  for (i=0; i<wordlength; i++){
-    for(j=0; j<gridsize; j++){
+  for (i = 0; i < wordlength; i++) {
+    for (j = 0; j < gridsize; j++) {
       columnlists[i].push(words[j][i]);
     }
   }
 
-  for (i=0; i<wordlength; i++){
-shuffle(columnlists[i]);
+  for (i = 0; i < wordlength; i++) {
+    shuffle(columnlists[i]);
   }
   console.log(columnlists);
   for (i = 0; i < gridsize; i++) {
@@ -324,12 +325,12 @@ shuffle(columnlists[i]);
       cell.innerHTML = columnlists[j][i];
       cell.classList.add("gridletter");
     }
-  
-}
+
+  }
 
 
 
-  
+
   console.log(scrambledwords);
 
 }
@@ -349,21 +350,21 @@ function drawattempts() {
     for (j = 0; j < wordlength; j++) {
       var cell = row.insertCell(-1);
       cell.innerHTML = attempts[i][j];
-      if (rightwrong[i] && j>=matchcount[i]){
+      if (rightwrong[i] && j >= matchcount[i]) {
         cell.classList.add("wronganswer");
-//        reportcardline += String.fromCodePoint(129477);
+        //        reportcardline += String.fromCodePoint(129477);
         reportcardline += String.fromCodePoint(129704);
       }
-      if (rightwrong[i] && j<matchcount[i]){
+      if (rightwrong[i] && j < matchcount[i]) {
         cell.classList.add("startingright");
         reportcardline += String.fromCodePoint(127819);
       }
-      if(!rightwrong[i]){
+      if (!rightwrong[i]) {
         cell.classList.add("rightanswer");
         reportcardline += String.fromCodePoint(127818);
-      }  
+      }
     }
-    reportcard = reportcardline  + "<br>" + reportcard;
+    reportcard = reportcardline + "<br>" + reportcard;
   }
 }
 
@@ -372,15 +373,15 @@ function drawattempts() {
 
 function getwords() {
   thewords = [];
-  
+
   today = new Date();
   month = today.getMonth();
   day = today.getDate();
 
-  monthday = month*100+day;
-  
-  console.log(monthday);  
-  switch(monthday){
+  monthday = month * 100 + day;
+
+  console.log(monthday);
+  switch (monthday) {
     case 1: return ["ready", "point", "laser", "stain", "audio"];
     case 2: return ["cater", "drift", "stake", "voice", "study"];
     case 3: return ["salve", "gross", "entry", "chant", "rotor"];
@@ -392,16 +393,16 @@ function getwords() {
 
 
   }
-  
+
   return ["aaaaa", "aaaaa", "aaaaa", "aaaaa", "aaaaa"];
 
-for (i=0; i<gridsize; i++){
-  thewords.push(bigwordlist5[Math.floor(Math.random() * bigwordlist5.length)]);
-//  thewords.push(bigwordlist7[Math.floor(Math.random() * bigwordlist7.length)]);
-}
-console.log(thewords);
-return thewords;
-return ["mixed", "weird", "laser", "funny", "funky"];
+  for (i = 0; i < gridsize; i++) {
+    thewords.push(bigwordlist5[Math.floor(Math.random() * bigwordlist5.length)]);
+    //  thewords.push(bigwordlist7[Math.floor(Math.random() * bigwordlist7.length)]);
+  }
+  console.log(thewords);
+  return thewords;
+  return ["mixed", "weird", "laser", "funny", "funky"];
 }
 
 function sortAlpha(word) {
@@ -411,24 +412,24 @@ function sortAlpha(word) {
 }
 
 function scramble(word) {
-  strarray = word.split('');           
-  var i,j,k
-  for (i = 0; i < strarray.length; i++){
+  strarray = word.split('');
+  var i, j, k
+  for (i = 0; i < strarray.length; i++) {
     j = Math.floor(Math.random() * i)
     k = strarray[i]
     strarray[i] = strarray[j]
     strarray[j] = k
   }
-  word = strarray.join('');  
+  word = strarray.join('');
   return word;
 }
 
 function shuffle(array) {
-  let currentIndex = array.length,  randomIndex;
-   while (currentIndex > 0) {
+  let currentIndex = array.length, randomIndex;
+  while (currentIndex > 0) {
     randomIndex = Math.floor(Math.random() * currentIndex);
     currentIndex--;
-  [array[currentIndex], array[randomIndex]] = [
+    [array[currentIndex], array[randomIndex]] = [
       array[randomIndex], array[currentIndex]];
   }
 
