@@ -22,6 +22,8 @@ function initializePage() {
   reportcardpane.style.display="none";
   grid = document.getElementById("gridtable");
   scorepane =    document.getElementById("scorepane");
+  document.getElementById("copymessage").style.display="none";
+
  for (i=0; i<wordlength; i++) inputletters.push("");
   grid.addEventListener('click', (ev) => {
     const [x, y] = [
@@ -163,6 +165,9 @@ function nextStage(){
     document.getElementById("resetbutton").style.display="none";
     document.getElementById("submitbutton").style.display="none";
     document.getElementById("gridpane").style.display="none";   
+    document.getElementById("rulesbutton").style.display="none";   
+    document.getElementById("shufflebutton").style.display="none";   
+
     document.getElementById("scorepane").innerHTML = "Score: " + score
     if (score==4) {scorepane.innerHTML +="<h2>Perfect!</h2>"}
     if (score==5) {scorepane.innerHTML +="<h2>Awesome!</h2>"}
@@ -170,8 +175,7 @@ function nextStage(){
     if (score==7) {scorepane.innerHTML +="<h2>Nice.</h2>"}
     if (score>10) {scorepane.innerHTML +="<h2>Okay then.</h2>"}
     document.getElementById("reportcardtext").innerHTML = reportcard;
-    reportcardpane.style.display="block";
-    
+    reportcardpane.style.display="block";    
   }
 }
 
@@ -205,15 +209,17 @@ function copyscore(){
   today = new Date();
   month = today.getMonth();
   month = getmonthname(month);
-  day = today.getDay();
+  day = today.getDate();
   datestring = month + " " + day;
   
 
   linktext = "\nhttp://catfrog6502.github.io\n";
-  reportcard = "Five-Stir: " + datestring + ": Score: " + score + "\n\n" + reportcard;
+  reportcard = "Five-Stir " + datestring + ": Score: " + score + "\n\n" + reportcard;
   reportcard = reportcard.replaceAll("<br>","\n");
   reportcard += linktext;
   navigator.clipboard.writeText(reportcard);
+  document.getElementById("copymessage").style.display="block";
+  
 }
 
 
@@ -363,9 +369,31 @@ function drawattempts() {
 
 
 
-function getwords() {
-thewords = [];
 
+function getwords() {
+  thewords = [];
+  
+  today = new Date();
+  month = today.getMonth();
+  day = today.getDate();
+
+  monthday = month*100+day;
+  
+  console.log(monthday);  
+  switch(monthday){
+    case 1: return ["ready", "point", "laser", "stain", "audio"];
+    case 2: return ["cater", "drift", "stake", "voice", "study"];
+    case 3: return ["salve", "gross", "entry", "chant", "rotor"];
+    case 4: return ["plumb", "lapel", "carob", "speak", "quark"];
+    case 5: return ["badly", "tripe", "thine", "lucid", "angle"];
+    case 6: return ["plump", "chair", "sushi", "loyal", "oaten"];
+    case 7: return ["logic", "clerk", "ascot", "tamer", "mound"];
+    case 1131: return ["logic", "clerk", "ascot", "tamer", "mound"];
+
+
+  }
+  
+  return ["aaaaa", "aaaaa", "aaaaa", "aaaaa", "aaaaa"];
 
 for (i=0; i<gridsize; i++){
   thewords.push(bigwordlist5[Math.floor(Math.random() * bigwordlist5.length)]);

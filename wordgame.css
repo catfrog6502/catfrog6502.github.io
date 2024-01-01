@@ -1,29 +1,3 @@
-
-.popup {
-    position: relative;
-    display: inline-block;
-    cursor: pointer;
-    -webkit-user-select: none;
-    -moz-user-select: none;
-    -ms-user-select: none;
-    user-select: none;
-    visibility: hidden;
-
-    opacity: 1;
-    background-color:#ccc;
-    position:fixed;
-    width:100%;
-    height:100%;
-    top:0px;
-    left:0px;
-    z-index:1000;
-  }
-
-  /* Toggle this class - hide and show the popup */
-.popup .show {
-    visibility: visible;
-  }
-  
   
 .mybutton {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
@@ -108,6 +82,7 @@ table {
 
 #copyscorebutton{
     background:blue;
+    color: white;
 }
 
 #wrapper {
