@@ -1,0 +1,64 @@
+<html>
+<head>
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-QBFYWZT9W9"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-QBFYWZT9W9');
+</script>
+  <title>Five-Stir</title>
+  <meta name="viewport" content="width=device-width initial-scale=1.0">
+  <meta name="og:title" content="Five-Stir"/>
+  <meta name="og:description" content="Unstir the words!"/>
+  <meta name="og:image" content="images/sample3.png"/>
+</head>
+
+<body>
+<div id="wrapper">
+<div id="logodiv">
+  <img src="images/logo.png" alt="Five-Stir" id="logopic">
+</div>
+  <div id="reportcardpane">
+    <div id="reportcardtext">
+    </div>
+  <div id="reportcardbuttons">
+    <button id="copyscorebutton" onclick="copyscore()" class="block">Copy Results</button>
+    <div id="copymessage"> Results Copied to Clipboard</div>
+  </div>
+</div>
+
+  <div id="gridpane">
+    <table id="gridtable">
+    </table>
+  </div>
+
+  <button id="rulesbutton"   onclick="showrules()"     class="mybutton">How to play</button>
+  <button id="resetbutton"   onclick="unselectAll()"   class="mybutton">Unselect All</button>
+  <button id="shufflebutton" onclick="drawgrid()"      class="mybutton">Shuffle</button>
+  <button id="submitbutton"  onclick="submitanswers()" class="mybutton">Submit</button>
+
+    <div id="scorepane">Score: 0
+    </div>
+ 
+
+
+  <div id="answerpane">
+    <table id="answertable">
+    </table>
+  </div>
+
+
+</div>
+
+    
+
+
+  <script type="text/javascript" src="dictionary.js"></script>
+  <script type="text/javascript" src="random.js"></script>
+  <link rel="stylesheet" href="wordgame.css">
+</body>
+</html>
+
