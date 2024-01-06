@@ -382,15 +382,24 @@ function getwords() {
 
   console.log(monthday);
   switch (monthday) {
+
+
+
     case 1: return ["ready", "point", "laser", "stain", "audio"];
     case 2: return ["cater", "drift", "stake", "voice", "study"];
     case 3: return ["salve", "gross", "entry", "chant", "rotor"];
     case 4: return ["plumb", "lapel", "carob", "speak", "quark"];
     case 5: return ["badly", "tripe", "thine", "lucid", "angle"];
     case 6: return ["plump", "chair", "sushi", "loyal", "oaten"];
-    case 7: return ["logic", "clerk", "ascot", "tamer", "mound"];
+    case 14: return ["logic", "clerk", "ascot", "tamer", "mound"];
+    case 8: return ["koala", "audio", "brook", "chive", "extra"];
+    case 9: return ["sleep", "grate", "digit", "phase", "skimp"];
+    case 10: return ["green", "zippy", "other", "binge", "forth"];
+    case 11: return ["never", "ounce", "equal", "treat", "moped"];
+    case 12: return ["sloth", "amaze", "pizza", "money", "frill"];
+    case 13: return ["bravo", "cocoa", "petty", "pager", "tease"];
+    case 7: return ["horse", "tapir", "zebra", "lemur", "tiger"];
     case 1131: return ["logic", "clerk", "ascot", "tamer", "mound"];
-
 
   }
 
