@@ -398,7 +398,13 @@ function getwords() {
     case 11: return ["never", "ounce", "equal", "treat", "moped"];
     case 12: return ["sloth", "amaze", "pizza", "money", "frill"];
     case 13: return ["bravo", "cocoa", "petty", "pager", "tease"];
-    case 7: return ["horse", "tapir", "zebra", "lemur", "tiger"];
+    case 15: return ["blurt", "tribe", "annal", "felon", "corny"];
+    case 16: return ["sandy", "gravy", "randy", "squad", "belly"];
+    case 17: return ["purse", "snake", "gator", "piled", "minty"];
+    case 18: return ["slimy", "brand", "crate", "speed", "brain"];
+    case 19: return ["gummy", "slain", "blood", "vivid", "divvy"];
+    case 20: return ["hurry", "banjo", "jumpy", "strip", "drift"];
+    case 21: return ["corps", "smile", "brick", "crumb", "bumpy"];
     case 1131: return ["logic", "clerk", "ascot", "tamer", "mound"];
 
   }
