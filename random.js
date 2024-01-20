@@ -394,7 +394,7 @@ function getwords() {
 
   }
 
-  return ["aaaaa", "aaaaa", "aaaaa", "aaaaa", "aaaaa"];
+//  return ["aaaaa", "aaaaa", "aaaaa", "aaaaa", "aaaaa"];
 
   for (i = 0; i < gridsize; i++) {
     thewords.push(bigwordlist5[Math.floor(Math.random() * bigwordlist5.length)]);
