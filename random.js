@@ -237,12 +237,12 @@ function submitanswers() {
       inputstring += inputletters[i];
     }
     console.log("You entered:" + inputstring);
-    if (!(bigwordlist5.includes(inputstring))){
-      sp = document.getElementById("scorepane")
-      sp.innerHTML = "\""+inputstring+"\" is not a Fivestir Word <br>" +sp.innerHTML
-      return;
+    // if (!(bigwordlist5.includes(inputstring))){
+    //   sp = document.getElementById("scorepane")
+    //   sp.innerHTML = "\""+inputstring+"\" is not a Fivestir Word <br>" +sp.innerHTML
+    //   return;
 
-    }
+    // }
 
 
 
