@@ -237,6 +237,15 @@ function submitanswers() {
       inputstring += inputletters[i];
     }
     console.log("You entered:" + inputstring);
+    if (!(bigwordlist5.includes(inputstring))){
+      sp = document.getElementById("scorepane")
+      sp.innerHTML = "\""+inputstring+"\" is not a Fivestir Word <br>" +sp.innerHTML
+      return;
+
+    }
+
+
+
   }
 
   if (previoustries.indexOf(inputstring) > -1) {
@@ -353,15 +362,15 @@ function drawattempts() {
       if (rightwrong[i] && j >= matchcount[i]) {
         cell.classList.add("wronganswer");
         //        reportcardline += String.fromCodePoint(129477);
-        reportcardline += String.fromCodePoint(129704);
+        reportcardline += String.fromCodePoint(129531);
       }
       if (rightwrong[i] && j < matchcount[i]) {
         cell.classList.add("startingright");
-        reportcardline += String.fromCodePoint(127819);
+        reportcardline += String.fromCodePoint(129413);
       }
       if (!rightwrong[i]) {
         cell.classList.add("rightanswer");
-        reportcardline += String.fromCodePoint(127818);
+        reportcardline += String.fromCodePoint(128005);
       }
     }
     reportcard = reportcardline + "<br>" + reportcard;
@@ -381,20 +390,20 @@ function getwords() {
   monthday = month * 100 + day;
 
   console.log(monthday);
-  switch (monthday) {
-    case 1: return ["ready", "point", "laser", "stain", "audio"];
-    case 2: return ["cater", "drift", "stake", "voice", "study"];
-    case 3: return ["salve", "gross", "entry", "chant", "rotor"];
-    case 4: return ["plumb", "lapel", "carob", "speak", "quark"];
-    case 5: return ["badly", "tripe", "thine", "lucid", "angle"];
-    case 6: return ["plump", "chair", "sushi", "loyal", "oaten"];
-    case 7: return ["logic", "clerk", "ascot", "tamer", "mound"];
-    case 1131: return ["logic", "clerk", "ascot", "tamer", "mound"];
+  // switch (monthday) {
+  //   case 1: return ["ready", "point", "laser", "stain", "audio"];
+  //   case 2: return ["cater", "drift", "stake", "voice", "study"];
+  //   case 3: return ["salve", "gross", "entry", "chant", "rotor"];
+  //   case 4: return ["plumb", "lapel", "carob", "speak", "quark"];
+  //   case 5: return ["badly", "tripe", "thine", "lucid", "angle"];
+  //   case 6: return ["plump", "chair", "sushi", "loyal", "oaten"];
+  //   case 7: return ["logic", "clerk", "ascot", "tamer", "mound"];
+  //   case 1131: return ["logic", "clerk", "ascot", "tamer", "mound"];
 
 
-  }
+  // }
 
-//  return ["aaaaa", "aaaaa", "aaaaa", "aaaaa", "aaaaa"];
+  // return ["aaaaa", "aaaaa", "aaaaa", "aaaaa", "aaaaa"];
 
   for (i = 0; i < gridsize; i++) {
     thewords.push(bigwordlist5[Math.floor(Math.random() * bigwordlist5.length)]);
