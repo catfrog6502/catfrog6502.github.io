@@ -245,6 +245,7 @@ function submitanswers() {
   //   }
   }
 
+
   if (previoustries.indexOf(inputstring) > -1) {
 
     scorepane.innerHTML = "Score: " + score + "<br>Already tried " + inputstring;
